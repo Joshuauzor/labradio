@@ -1,0 +1,130 @@
+name: labradio
+description: "Disvover limitless radio stations from around the world."
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.5
+
+
+dependencies:
+  another_flushbar: ^1.12.30
+  bloc: ^9.0.0
+  cached_network_image: ^3.4.1
+  collection: ^1.19.1
+  cupertino_icons: ^1.0.8
+  dartz: ^0.10.1
+  device_info_plus: ^13.1.0
+  device_preview_plus: ^2.3.4
+  dio: ^5.8.0+1
+  dio_smart_retry: ^7.0.1
+  equatable: ^2.0.7
+  firebase_analytics: ^12.4.1
+  firebase_core: ^4.4.0
+  firebase_crashlytics: ^5.0.7
+  flutter_bloc: ^9.1.0
+  flutter_dotenv: ^5.2.1
+  flutter_local_notifications: ^19.1.0
+  flutter:
+    sdk: flutter
+  flutter_native_splash: ^2.4.4
+  flutter_secure_storage: ^10.2.0
+  flutter_svg: ^2.0.17
+  freezed_annotation: ^3.0.0
+  gap: ^3.0.1
+  get_it: ^8.0.3
+  http_parser: ^4.1.2
+  injectable: ^2.5.0
+  internet_connection_checker: ^3.0.1
+  intl: ^0.20.2
+  json_annotation: ^4.9.0
+  logger: ^2.5.0
+  package_info_plus: ^10.1.0
+  permission_handler: ^12.0.0+1
+  pull_to_refresh: ^2.0.0
+  retrofit: ^4.4.2
+  rxdart: ^0.28.0
+  share_plus: ^13.1.0
+  shimmer: ^3.0.0
+  timeago: ^3.7.1
+  url_launcher: ^6.3.2
+
+dev_dependencies:
+  bloc_test: ^10.0.0
+  build_runner: ^2.4.15
+  flutter_test:
+    sdk: flutter
+  freezed: ^3.0.0
+  injectable_generator: ^2.7.0
+  json_serializable: ^6.9.5
+  retrofit_generator: ^10.1.1
+  very_good_analysis: ^7.0.0
+
+
+
+flutter:
+  generate: true
+  uses-material-design: true
+
+assets:
+    - assets/images/
+    - assets/icons/
+    - assets/fonts/
+    - assets/jsons/
+    - .env.development
+    - .env.production
+
+fonts:
+  - family: Inter
+    fonts:
+        - asset: assets/fonts/Inter-Black.ttf
+        - asset: assets/fonts/Inter-BlackItalic.ttf
+        - asset: assets/fonts/Inter-Bold.ttf
+        - asset: assets/fonts/Inter-BoldItalic.ttf
+        - asset: assets/fonts/Inter-ExtraBold.ttf
+        - asset: assets/fonts/Inter-ExtraBoldItalic.ttf
+        - asset: assets/fonts/Inter-ExtraLight.ttf
+        - asset: assets/fonts/Inter-ExtraLightItalic.ttf
+        - asset: assets/fonts/Inter-Italic.ttf
+        - asset: assets/fonts/Inter-Light.ttf
+        - asset: assets/fonts/Inter-LightItalic.ttf
+        - asset: assets/fonts/Inter-Medium.ttf
+        - asset: assets/fonts/Inter-MediumItalic.ttf
+        - asset: assets/fonts/Inter-Regular.ttf
+        - asset: assets/fonts/Inter-SemiBold.ttf
+        - asset: assets/fonts/Inter-SemiBoldItalic.ttf
+        - asset: assets/fonts/Inter-Thin.ttf
+        - asset: assets/fonts/Inter-ThinItalic.ttf
+
+   
+flutter_native_splash:
+  # Background color (applies to iOS and Android < 12)
+  color: "#F2F4F5" 
+  
+  # Dark mode support
+  color_dark: "#090A0A"
+  
+  
+  # Android 12+ specific settings
+  # Note: Android 12+ uses a different splash screen API
+  # The main 'color' setting above automatically applies to Android 12+ background
+  android_12:
+    # Icon background color (the circle behind the app icon on Android 12+)
+    icon_background_color: "#FFFFFF"
+    icon_background_color_dark: "#000000"
+    # Background color for Android 12+ (inherits from main 'color' if not specified)
+    color: "#F2F4F5"
+    color_dark: "#090A0A"
+ 
+  
+  # Additional options (Note: android_gravity and fullscreen don't apply to Android 12+)
+  android_gravity: center
+  ios_content_mode: center
+  fullscreen: true
+  
+  # Preserve native splash screen during app initialization
+  android: true
+  # iOS specific settings
+  ios: true
