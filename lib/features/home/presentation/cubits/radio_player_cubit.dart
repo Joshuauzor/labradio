@@ -25,12 +25,12 @@ class RadioPlayerCubit extends Cubit<RadioPlayerState> {
     // ensure not to play the same station again
     if (_station != station || !isPlaying) {
       _station = station;
-      print('initialize');
       final audioSource = AudioSource.uri(
         Uri.parse(station.streams.firstOrNull?.url ?? ''),
       );
       // initialize audio engine
       unawaited(audioController.init(audioSource: audioSource));
+      emit(RadioPlayerState.loaded(station: _station));
     }
   }
 

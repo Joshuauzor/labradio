@@ -128,13 +128,13 @@ return loaded(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( String message)?  error,TResult Function()?  loaded,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( String message)?  error,TResult Function( StationEntity? station)?  loaded,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _$Initial() when initial != null:
 return initial();case _$Loading() when loading != null:
 return loading();case _$Error() when error != null:
 return error(_that.message);case _$Loaded() when loaded != null:
-return loaded();case _:
+return loaded(_that.station);case _:
   return orElse();
 
 }
@@ -152,13 +152,13 @@ return loaded();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( String message)  error,required TResult Function()  loaded,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( String message)  error,required TResult Function( StationEntity? station)  loaded,}) {final _that = this;
 switch (_that) {
 case _$Initial():
 return initial();case _$Loading():
 return loading();case _$Error():
 return error(_that.message);case _$Loaded():
-return loaded();case _:
+return loaded(_that.station);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -175,13 +175,13 @@ return loaded();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( String message)?  error,TResult? Function()?  loaded,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( String message)?  error,TResult? Function( StationEntity? station)?  loaded,}) {final _that = this;
 switch (_that) {
 case _$Initial() when initial != null:
 return initial();case _$Loading() when loading != null:
 return loading();case _$Error() when error != null:
 return error(_that.message);case _$Loaded() when loaded != null:
-return loaded();case _:
+return loaded(_that.station);case _:
   return null;
 
 }
@@ -323,32 +323,66 @@ as String,
 
 
 class _$Loaded implements RadioPlayerState {
-  const _$Loaded();
+  const _$Loaded({required this.station});
   
 
+ final  StationEntity? station;
 
-
+/// Create a copy of RadioPlayerState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$$LoadedCopyWith<_$Loaded> get copyWith => __$$LoadedCopyWithImpl<_$Loaded>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _$Loaded);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _$Loaded&&(identical(other.station, station) || other.station == station));
 }
 
 
 @override
-int get hashCode => runtimeType.hashCode;
+int get hashCode => Object.hash(runtimeType,station);
 
 @override
 String toString() {
-  return 'RadioPlayerState.loaded()';
+  return 'RadioPlayerState.loaded(station: $station)';
 }
 
 
 }
 
+/// @nodoc
+abstract mixin class _$$LoadedCopyWith<$Res> implements $RadioPlayerStateCopyWith<$Res> {
+  factory _$$LoadedCopyWith(_$Loaded value, $Res Function(_$Loaded) _then) = __$$LoadedCopyWithImpl;
+@useResult
+$Res call({
+ StationEntity? station
+});
 
 
+
+
+}
+/// @nodoc
+class __$$LoadedCopyWithImpl<$Res>
+    implements _$$LoadedCopyWith<$Res> {
+  __$$LoadedCopyWithImpl(this._self, this._then);
+
+  final _$Loaded _self;
+  final $Res Function(_$Loaded) _then;
+
+/// Create a copy of RadioPlayerState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? station = freezed,}) {
+  return _then(_$Loaded(
+station: freezed == station ? _self.station : station // ignore: cast_nullable_to_non_nullable
+as StationEntity?,
+  ));
+}
+
+
+}
 
 // dart format on
