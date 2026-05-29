@@ -68,35 +68,35 @@ flutter:
   generate: true
   uses-material-design: true
 
-assets:
-    - assets/images/
-    - assets/icons/
-    - assets/fonts/
-    - assets/jsons/
-    - .env.development
-    - .env.production
+  assets:
+      - assets/images/
+      - assets/icons/
+      - assets/fonts/
+      - assets/jsons/
+      - .env.development
+      - .env.production
 
-fonts:
-  - family: Inter
-    fonts:
-        - asset: assets/fonts/Inter-Black.ttf
-        - asset: assets/fonts/Inter-BlackItalic.ttf
-        - asset: assets/fonts/Inter-Bold.ttf
-        - asset: assets/fonts/Inter-BoldItalic.ttf
-        - asset: assets/fonts/Inter-ExtraBold.ttf
-        - asset: assets/fonts/Inter-ExtraBoldItalic.ttf
-        - asset: assets/fonts/Inter-ExtraLight.ttf
-        - asset: assets/fonts/Inter-ExtraLightItalic.ttf
-        - asset: assets/fonts/Inter-Italic.ttf
-        - asset: assets/fonts/Inter-Light.ttf
-        - asset: assets/fonts/Inter-LightItalic.ttf
-        - asset: assets/fonts/Inter-Medium.ttf
-        - asset: assets/fonts/Inter-MediumItalic.ttf
-        - asset: assets/fonts/Inter-Regular.ttf
-        - asset: assets/fonts/Inter-SemiBold.ttf
-        - asset: assets/fonts/Inter-SemiBoldItalic.ttf
-        - asset: assets/fonts/Inter-Thin.ttf
-        - asset: assets/fonts/Inter-ThinItalic.ttf
+  fonts:
+    - family: Inter
+      fonts:
+          - asset: assets/fonts/Inter-Black.ttf
+          - asset: assets/fonts/Inter-BlackItalic.ttf
+          - asset: assets/fonts/Inter-Bold.ttf
+          - asset: assets/fonts/Inter-BoldItalic.ttf
+          - asset: assets/fonts/Inter-ExtraBold.ttf
+          - asset: assets/fonts/Inter-ExtraBoldItalic.ttf
+          - asset: assets/fonts/Inter-ExtraLight.ttf
+          - asset: assets/fonts/Inter-ExtraLightItalic.ttf
+          - asset: assets/fonts/Inter-Italic.ttf
+          - asset: assets/fonts/Inter-Light.ttf
+          - asset: assets/fonts/Inter-LightItalic.ttf
+          - asset: assets/fonts/Inter-Medium.ttf
+          - asset: assets/fonts/Inter-MediumItalic.ttf
+          - asset: assets/fonts/Inter-Regular.ttf
+          - asset: assets/fonts/Inter-SemiBold.ttf
+          - asset: assets/fonts/Inter-SemiBoldItalic.ttf
+          - asset: assets/fonts/Inter-Thin.ttf
+          - asset: assets/fonts/Inter-ThinItalic.ttf
 
    
 flutter_native_splash:

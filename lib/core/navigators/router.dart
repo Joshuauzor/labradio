@@ -10,6 +10,18 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         viewToShow: const SplashView(),
       );
 
+    case AppRoutes.onboarding:
+      return _getPageRoute(
+        routeName: settings.name!,
+        viewToShow: const OnboardingView(),
+      );
+
+    case AppRoutes.home:
+      return _getPageRoute(
+        routeName: settings.name!,
+        viewToShow: const HomeView(),
+      );
+
     default:
       return MaterialPageRoute<dynamic>(
         builder: (_) => Scaffold(

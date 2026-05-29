@@ -57,39 +57,27 @@ class _AppState extends State<App> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        // BlocProvider<CliqmitUserBloc>(create: (context) => CliqmitUserBloc()),
-        // BlocProvider<OnboardingCubit>(
-        //   create: (context) => OnboardingCubit(
-        //     configurationUseCase: sl<ConfigurationUseCase>(),
-        //     appVersion: sl<AppVersion>(),
-        //     networkInfo: sl<NetworkInfo>(),
-        //   ),
-        // ),
-      ],
-      child: Builder(
-        builder: (context) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            locale: DevicePreview.locale(context),
-            builder: (context, child) {
-              // Initialize localization service globally
-              LocalizationService.setLocale(context);
-              return DevicePreview.appBuilder(context, child);
-            },
-            onGenerateRoute: generateRoute,
-            navigatorKey: navKey,
-            navigatorObservers: [appRouteObserver],
-            localizationsDelegates: AppLocalizations.localizationsDelegates,
-            supportedLocales: const [Locale('en'), Locale('es')],
-            themeMode: ThemeMode.system,
-            darkTheme: darkTheme,
-            theme: lightTheme,
-            initialRoute: AppRoutes.splash,
-          );
-        },
-      ),
+    return Builder(
+      builder: (context) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          locale: DevicePreview.locale(context),
+          builder: (context, child) {
+            // Initialize localization service globally
+            LocalizationService.setLocale(context);
+            return DevicePreview.appBuilder(context, child);
+          },
+          onGenerateRoute: generateRoute,
+          navigatorKey: navKey,
+          navigatorObservers: [appRouteObserver],
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: const [Locale('en'), Locale('es')],
+          themeMode: ThemeMode.system,
+          darkTheme: darkTheme,
+          theme: lightTheme,
+          initialRoute: AppRoutes.splash,
+        );
+      },
     );
   }
 }

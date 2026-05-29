@@ -19,7 +19,7 @@ Future<void> main() async {
     dotenv.load(fileName: environment),
 
     /// Initializing the firebase app.
-    Firebase.initializeApp(),
+    // Firebase.initializeApp(),
 
     /// Create Android 8.0+ notifications channel
     App.flutterLocalNotificationsPlugin
@@ -34,11 +34,11 @@ Future<void> main() async {
   // FirebaseMessaging.onBackgroundMessage(_showNotification);
 
   // Record errors to firebase crashlytics
-  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
-  PlatformDispatcher.instance.onError = (error, stack) {
-    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
-    return true;
-  };
+  // FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+  // PlatformDispatcher.instance.onError = (error, stack) {
+  //   FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+  //   return true;
+  // };
 
   configureDependencies();
 

@@ -1,3 +1,4 @@
 export 'favorites/favorites.dart';
+export 'home/home.dart';
 export 'onboarding/onboarding.dart';
-export 'stations/stations.dart';
+export 'player/player.dart';
