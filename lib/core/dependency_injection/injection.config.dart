@@ -19,10 +19,18 @@ import 'package:internet_connection_checker/internet_connection_checker.dart'
 import 'package:labradio/core/analytics/google_analytics.dart' as _i393;
 import 'package:labradio/core/app_info/app_version.dart' as _i752;
 import 'package:labradio/core/app_info/device_info.dart' as _i231;
+import 'package:labradio/core/core.dart' as _i30;
 import 'package:labradio/core/dependency_injection/register_module.dart'
     as _i649;
 import 'package:labradio/core/local_data/local_data_storage.dart' as _i235;
 import 'package:labradio/core/network/network_info.dart' as _i876;
+import 'package:labradio/features/features.dart' as _i396;
+import 'package:labradio/features/home/data/datasources/station_remote_datasource.dart'
+    as _i521;
+import 'package:labradio/features/home/data/repositories/station_repository_impl.dart'
+    as _i65;
+import 'package:labradio/features/home/domain/usecases/get_stations_usecase.dart'
+    as _i336;
 import 'package:package_info_plus/package_info_plus.dart' as _i655;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -55,8 +63,21 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i752.AppVersion>(
       () => _i752.AppVersion(packageInfo: gh<_i655.PackageInfo>()),
     );
+    gh.lazySingleton<_i521.StationRemoteDataSource>(
+      () => _i521.StationRemoteDataSourceImpl(
+        networkInfo: gh<_i30.NetworkInfo>(),
+        localDataStorage: gh<_i30.LocalDataStorage>(),
+        dio: gh<_i361.Dio>(),
+      ),
+    );
     gh.lazySingleton<_i231.DeviceInfo>(
       () => _i231.DeviceInfo(deviceInfo: gh<_i833.DeviceInfoPlugin>()),
+    );
+    gh.lazySingleton<_i396.StationRepository>(
+      () => _i65.StationRepositoryImpl(gh<_i396.StationRemoteDataSource>()),
+    );
+    gh.lazySingleton<_i336.GetStationsUseCase>(
+      () => _i336.GetStationsUseCase(gh<_i396.StationRepository>()),
     );
     return this;
   }

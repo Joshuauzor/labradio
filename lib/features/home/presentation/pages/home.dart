@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:labradio/app/app.dart';
 import 'package:labradio/core/core.dart';
@@ -29,7 +30,19 @@ class _HomeViewState extends State<HomeView> {
                 ],
               ),
               Gap(16),
-              Expanded(child: Column(children: [StationItem()])),
+              Expanded(
+                child: BlocBuilder<ExploreStationsCubit, ExploreStationsState>(
+                  builder: (context, state) {
+                    return switch (state) {
+                      ExploreStationsLoading() => const StationListLoader(),
+                      ExploreStationsLoaded() => Column(
+                        children: [StationItem()],
+                      ),
+                      _ => const StationListLoader(),
+                    };
+                  },
+                ),
+              ),
             ],
           ),
         ),

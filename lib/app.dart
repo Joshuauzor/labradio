@@ -1,4 +1,5 @@
 import 'package:labradio/core/core.dart';
+import 'package:labradio/features/features.dart';
 import 'package:labradio/l10n/app_localizations.dart';
 import 'package:device_preview_plus/device_preview_plus.dart';
 import 'package:flutter/material.dart';
@@ -57,27 +58,36 @@ class _AppState extends State<App> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    return Builder(
-      builder: (context) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          locale: DevicePreview.locale(context),
-          builder: (context, child) {
-            // Initialize localization service globally
-            LocalizationService.setLocale(context);
-            return DevicePreview.appBuilder(context, child);
-          },
-          onGenerateRoute: generateRoute,
-          navigatorKey: navKey,
-          navigatorObservers: [appRouteObserver],
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: const [Locale('en'), Locale('es')],
-          themeMode: ThemeMode.system,
-          darkTheme: darkTheme,
-          theme: lightTheme,
-          initialRoute: AppRoutes.splash,
-        );
-      },
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<ExploreStationsCubit>(
+          create: (context) =>
+              ExploreStationsCubit(getStationsUseCase: sl<GetStationsUseCase>())
+                ..getStations(skip: 0),
+        ),
+      ],
+      child: Builder(
+        builder: (context) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            locale: DevicePreview.locale(context),
+            builder: (context, child) {
+              // Initialize localization service globally
+              LocalizationService.setLocale(context);
+              return DevicePreview.appBuilder(context, child);
+            },
+            onGenerateRoute: generateRoute,
+            navigatorKey: navKey,
+            navigatorObservers: [appRouteObserver],
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: const [Locale('en'), Locale('es')],
+            themeMode: ThemeMode.system,
+            darkTheme: darkTheme,
+            theme: lightTheme,
+            initialRoute: AppRoutes.splash,
+          );
+        },
+      ),
     );
   }
 }
