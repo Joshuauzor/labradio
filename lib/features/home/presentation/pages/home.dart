@@ -35,8 +35,20 @@ class _HomeViewState extends State<HomeView> {
                   builder: (context, state) {
                     return switch (state) {
                       ExploreStationsLoading() => const StationListLoader(),
-                      ExploreStationsLoaded() => Column(
-                        children: [StationItem()],
+                      ExploreStationsLoaded() => ListView.separated(
+                        itemCount: state.stations.length,
+                        separatorBuilder: (context, index) => Gap(10),
+                        itemBuilder: (context, index) {
+                          final station = state.stations[index];
+                          return StationItem(
+                            name: station.name,
+                            location: station.location?.locationText,
+                            language: station.languages.first.name,
+                            logo: station.logo,
+                            onFavorite: () {},
+                            isFavorite: station.isFavorite ?? false,
+                          );
+                        },
                       ),
                       _ => const StationListLoader(),
                     };

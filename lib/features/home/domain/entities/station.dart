@@ -11,6 +11,7 @@ class StationEntity extends Equatable {
     required this.location,
     required this.streams,
     required this.languages,
+    required this.isFavorite,
   });
 
   final int id;
@@ -21,6 +22,7 @@ class StationEntity extends Equatable {
   final StationLocationModel? location;
   final List<StationStreamModel> streams;
   final List<StationLanguageModel> languages;
+  final bool? isFavorite;
 
   StationEntity copyWith({
     int? id,
@@ -31,6 +33,7 @@ class StationEntity extends Equatable {
     StationLocationModel? location,
     List<StationStreamModel>? streams,
     List<StationLanguageModel>? languages,
+    bool? isFavorite,
   }) {
     return StationEntity(
       id: id ?? this.id,
@@ -41,6 +44,7 @@ class StationEntity extends Equatable {
       location: location ?? this.location,
       streams: streams ?? this.streams,
       languages: languages ?? this.languages,
+      isFavorite: isFavorite ?? this.isFavorite,
     );
   }
 
@@ -55,5 +59,6 @@ class StationEntity extends Equatable {
     streams,
     languages,
     location,
+    isFavorite,
   ];
 }

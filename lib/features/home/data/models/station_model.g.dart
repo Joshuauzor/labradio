@@ -21,6 +21,7 @@ StationModel _$StationModelFromJson(Map<String, dynamic> json) => StationModel(
   languages: (json['languages'] as List<dynamic>)
       .map((e) => StationLanguageModel.fromJson(e as Map<String, dynamic>))
       .toList(),
+  isFavorite: json['isFavorite'] as bool?,
 );
 
 Map<String, dynamic> _$StationModelToJson(StationModel instance) =>
@@ -33,4 +34,5 @@ Map<String, dynamic> _$StationModelToJson(StationModel instance) =>
       'location': instance.location?.toJson(),
       'streams': instance.streams.map((e) => e.toJson()).toList(),
       'languages': instance.languages.map((e) => e.toJson()).toList(),
+      'isFavorite': instance.isFavorite,
     };

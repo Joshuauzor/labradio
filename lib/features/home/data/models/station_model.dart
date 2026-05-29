@@ -14,6 +14,7 @@ class StationModel extends StationEntity {
     required super.location,
     required super.streams,
     required super.languages,
+    required super.isFavorite,
   });
 
   factory StationModel.fromJson(Map<String, dynamic> json) =>

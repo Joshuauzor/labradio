@@ -9,9 +9,9 @@ class StationStreamEntity extends Equatable {
 
   final String url;
   final String? codec;
-  final String? bitrate;
+  final int? bitrate;
 
-  StationStreamEntity copyWith({String? url, String? codec, String? bitrate}) {
+  StationStreamEntity copyWith({String? url, String? codec, int? bitrate}) {
     return StationStreamEntity(
       url: url ?? this.url,
       codec: codec ?? this.codec,

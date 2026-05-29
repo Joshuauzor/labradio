@@ -10,7 +10,7 @@ StationStreamModel _$StationStreamModelFromJson(Map<String, dynamic> json) =>
     StationStreamModel(
       url: json['url'] as String,
       codec: json['codec'] as String?,
-      bitrate: json['bitrate'] as String?,
+      bitrate: (json['bitrate'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$StationStreamModelToJson(StationStreamModel instance) =>
