@@ -16,6 +16,7 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:internet_connection_checker/internet_connection_checker.dart'
     as _i973;
+import 'package:just_audio/just_audio.dart' as _i501;
 import 'package:labradio/core/analytics/google_analytics.dart' as _i393;
 import 'package:labradio/core/app_info/app_version.dart' as _i752;
 import 'package:labradio/core/app_info/device_info.dart' as _i231;
@@ -24,6 +25,7 @@ import 'package:labradio/core/dependency_injection/register_module.dart'
     as _i649;
 import 'package:labradio/core/local_data/local_data_storage.dart' as _i235;
 import 'package:labradio/core/network/network_info.dart' as _i876;
+import 'package:labradio/core/services/audio_controller.dart' as _i1040;
 import 'package:labradio/features/features.dart' as _i396;
 import 'package:labradio/features/home/data/datasources/station_remote_datasource.dart'
     as _i521;
@@ -49,11 +51,15 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i973.InternetConnectionChecker>(
       () => registerModule.internetConnectionChecker,
     );
+    gh.factory<_i501.AudioPlayer>(() => registerModule.audioPlayer);
     await gh.factoryAsync<_i655.PackageInfo>(
       () => registerModule.getPackageInfo(),
       preResolve: true,
     );
     gh.lazySingleton<_i393.GoogleAnalytics>(() => _i393.GoogleAnalytics());
+    gh.lazySingleton<_i1040.AudioController>(
+      () => _i1040.AudioController(gh<_i501.AudioPlayer>()),
+    );
     gh.lazySingleton<_i235.LocalDataStorage>(
       () => _i235.LocalDataStorageImpl(gh<_i558.FlutterSecureStorage>()),
     );

@@ -13,6 +13,7 @@ class StationItem extends StatelessWidget {
     required this.logo,
     required this.onFavorite,
     required this.isFavorite,
+    this.onTap,
   });
 
   final String name;
@@ -21,52 +22,56 @@ class StationItem extends StatelessWidget {
   final String? logo;
   final VoidCallback onFavorite;
   final bool isFavorite;
-
+  final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        color: AppColors.secondary,
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.shadow,
-            blurRadius: 27,
-            offset: const Offset(0, 4),
-          ),
-        ],
-        // border: Border.all(color: AppColors.primary),
-      ),
-      child: Row(
-        children: [
-          PhotoHolder(image: logo, width: 90, height: 90, borderRadius: 8),
-          Gap(16),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TextBold(name, fontSize: 16),
-                Gap(4),
-                TextRegular(
-                  location ?? 'N/A',
-                  color: AppColors.outline,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                ),
-                Gap(4),
-                TextRegular(
-                  language ?? 'N/A',
-                  color: AppColors.outline,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w400,
-                ),
-              ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          color: AppColors.secondary,
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.shadow,
+              blurRadius: 27,
+              offset: const Offset(0, 4),
             ),
-          ),
-          Gap(16),
-          SvgPicture.asset(AppAssets.favorite),
-        ],
+          ],
+          // border: Border.all(color: AppColors.primary),
+        ),
+        child: Row(
+          children: [
+            PhotoHolder(image: logo, width: 90, height: 90, borderRadius: 8),
+            Gap(16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TextBold(name, fontSize: 16),
+                  Gap(4),
+                  TextRegular(
+                    location ?? 'N/A',
+                    color: AppColors.outline,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    maxLines: 1,
+                  ),
+                  Gap(4),
+                  TextRegular(
+                    language ?? 'N/A',
+                    color: AppColors.outline,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ],
+              ),
+            ),
+            Gap(16),
+            SvgPicture.asset(AppAssets.favorite),
+          ],
+        ),
       ),
     );
   }

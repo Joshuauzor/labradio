@@ -35,20 +35,37 @@ class _HomeViewState extends State<HomeView> {
                   builder: (context, state) {
                     return switch (state) {
                       ExploreStationsLoading() => const StationListLoader(),
-                      ExploreStationsLoaded() => ListView.separated(
-                        itemCount: state.stations.length,
-                        separatorBuilder: (context, index) => Gap(10),
-                        itemBuilder: (context, index) {
-                          final station = state.stations[index];
-                          return StationItem(
-                            name: station.name,
-                            location: station.location?.locationText,
-                            language: station.languages.first.name,
-                            logo: station.logo,
-                            onFavorite: () {},
-                            isFavorite: station.isFavorite ?? false,
-                          );
-                        },
+                      ExploreStationsLoaded() => Stack(
+                        children: [
+                          ListView.separated(
+                            itemCount: state.stations.length,
+                            separatorBuilder: (context, index) => Gap(10),
+                            itemBuilder: (context, index) {
+                              final station = state.stations[index];
+                              return StationItem(
+                                name: station.name,
+                                location: station.location?.locationText,
+                                language: station.languages.firstOrNull?.name,
+                                logo: station.logo,
+                                onFavorite: () {},
+                                isFavorite: station.isFavorite ?? false,
+                                onTap: () => Navigator.pushNamed(
+                                  context,
+                                  AppRoutes.radioPlayer,
+                                  arguments: RadioPlayerParams(
+                                    station: station,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                          const Positioned(
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            child: MiniPlayer(),
+                          ),
+                        ],
                       ),
                       _ => const StationListLoader(),
                     };

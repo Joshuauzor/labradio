@@ -9,9 +9,9 @@ part of 'station_model.dart';
 StationModel _$StationModelFromJson(Map<String, dynamic> json) => StationModel(
   id: (json['id'] as num).toInt(),
   name: json['name'] as String,
-  slug: json['slug'] as String,
+  slug: json['slug'] as String?,
   isActive: json['isActive'] as bool,
-  logo: json['logo'] as String,
+  logo: json['logo'] as String?,
   location: json['location'] == null
       ? null
       : StationLocationModel.fromJson(json['location'] as Map<String, dynamic>),

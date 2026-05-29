@@ -10,4 +10,6 @@ class AppAssets {
   static const String hamburger = 'assets/icons/hamburger.svg';
   static const String favorite = 'assets/icons/favorite.svg';
   static const String favoriteFilled = 'assets/icons/marked_as_favorite.svg';
+  static const String pause = 'assets/icons/pause.svg';
+  static const String play = 'assets/icons/play.svg';
 }

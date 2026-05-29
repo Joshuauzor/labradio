@@ -65,6 +65,12 @@ class _AppState extends State<App> with WidgetsBindingObserver {
               ExploreStationsCubit(getStationsUseCase: sl<GetStationsUseCase>())
                 ..getStations(skip: 0),
         ),
+        BlocProvider<RadioPlayerCubit>(
+          create: (context) => RadioPlayerCubit(
+            audioController: sl<AudioController>(),
+            analytics: sl<GoogleAnalytics>(),
+          ),
+        ),
       ],
       child: Builder(
         builder: (context) {

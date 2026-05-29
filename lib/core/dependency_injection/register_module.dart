@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 @module
@@ -18,4 +19,6 @@ abstract class RegisterModule {
 
   InternetConnectionChecker get internetConnectionChecker =>
       InternetConnectionChecker.createInstance();
+
+  AudioPlayer get audioPlayer => AudioPlayer();
 }

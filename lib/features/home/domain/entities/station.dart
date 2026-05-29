@@ -16,9 +16,9 @@ class StationEntity extends Equatable {
 
   final int id;
   final String name;
-  final String slug;
+  final String? slug;
   final bool isActive;
-  final String logo;
+  final String? logo;
   final StationLocationModel? location;
   final List<StationStreamModel> streams;
   final List<StationLanguageModel> languages;
