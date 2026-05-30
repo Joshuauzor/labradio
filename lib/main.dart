@@ -3,7 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:labradio/app.dart';
 import 'package:labradio/bootstrap.dart';
@@ -20,12 +19,12 @@ Future<void> main() async {
     // Firebase.initializeApp(),
 
     /// Create Android 8.0+ notifications channel
-    App.flutterLocalNotificationsPlugin
-            .resolvePlatformSpecificImplementation<
-              AndroidFlutterLocalNotificationsPlugin
-            >()
-            ?.createNotificationChannel(App.androidChannel) ??
-        Future<void>.value(),
+    // App.flutterLocalNotificationsPlugin
+    //         .resolvePlatformSpecificImplementation<
+    //           AndroidFlutterLocalNotificationsPlugin
+    //         >()
+    //         ?.createNotificationChannel(App.androidChannel) ??
+    //     Future<void>.value(),
   ]);
 
   // // // Sets push notifications to display background message handler.

@@ -6,13 +6,13 @@ import 'package:labradio/core/core.dart';
 
 class StationItem extends StatelessWidget {
   const StationItem({
-    super.key,
     required this.name,
     required this.location,
     required this.language,
     required this.logo,
     required this.onFavorite,
     required this.isFavorite,
+    super.key,
     this.onTap,
   });
 
@@ -30,11 +30,11 @@ class StationItem extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         color: AppColors.secondary,
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             color: AppColors.shadow,
             blurRadius: 27,
-            offset: const Offset(0, 4),
+            offset: Offset(0, 4),
           ),
         ],
         // border: Border.all(color: AppColors.primary),
@@ -52,31 +52,29 @@ class StationItem extends StatelessWidget {
                     height: 90,
                     borderRadius: 8,
                   ),
-                  Gap(16),
+                  const Gap(16),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        TextBold(name, fontSize: 16),
-                        Gap(4),
+                        TextBold(name),
+                        const Gap(4),
                         TextRegular(
                           location ?? 'N/A',
                           color: AppColors.outline,
                           fontSize: 14,
-                          fontWeight: FontWeight.w400,
                           maxLines: 1,
                         ),
-                        Gap(4),
+                        const Gap(4),
                         TextRegular(
                           language ?? 'N/A',
                           color: AppColors.outline,
                           fontSize: 12,
-                          fontWeight: FontWeight.w400,
                         ),
                       ],
                     ),
                   ),
-                  Gap(16),
+                  const Gap(16),
                 ],
               ),
             ),

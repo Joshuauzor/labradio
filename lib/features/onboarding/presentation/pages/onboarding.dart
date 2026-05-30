@@ -37,7 +37,7 @@ class _OnboardingViewState extends State<OnboardingView> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         RichText(
-                          text: TextSpan(
+                          text: const TextSpan(
                             style: TextStyle(
                               fontSize: 40,
                               fontWeight: FontWeight.w300,
@@ -54,14 +54,13 @@ class _OnboardingViewState extends State<OnboardingView> {
                             ],
                           ),
                         ),
-                        Gap(18),
+                        const Gap(18),
                         TextRegular(
                           'Listen to your favorite radio stations for free, anywhere and offline with Lab Radio',
                           color: AppColors.outline,
                           fontSize: 14,
-                          fontWeight: FontWeight.w400,
                         ),
-                        Gap(32),
+                        const Gap(32),
                         FittedBox(
                           child: GestureDetector(
                             onTap: () => Navigator.pushNamedAndRemoveUntil(
@@ -100,7 +99,7 @@ class _OnboardingViewState extends State<OnboardingView> {
                         const TextSpan(text: 'By continuing, you agree to the'),
                         TextSpan(
                           text: ' Terms of service',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.w500,
                             color: AppColors.primary,
                           ),
@@ -111,7 +110,7 @@ class _OnboardingViewState extends State<OnboardingView> {
                         const TextSpan(text: ' and'),
                         TextSpan(
                           text: ' Privacy Policy',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.w500,
                             color: AppColors.primary,
                           ),

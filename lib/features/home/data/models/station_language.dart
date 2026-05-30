@@ -1,5 +1,5 @@
-import 'package:labradio/features/features.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:labradio/features/features.dart';
 
 part 'station_language.g.dart';
 

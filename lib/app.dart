@@ -1,11 +1,10 @@
-import 'package:labradio/core/core.dart';
-import 'package:labradio/features/features.dart';
-import 'package:labradio/l10n/app_localizations.dart';
 import 'package:device_preview_plus/device_preview_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:labradio/core/core.dart';
+import 'package:labradio/features/features.dart';
+import 'package:labradio/l10n/app_localizations.dart';
 
 GlobalKey<NavigatorState> navKey = GlobalKey<NavigatorState>();
 // declare custom used to nav across all parts of the app
@@ -14,17 +13,6 @@ final currentLocale = Localizations.localeOf(navKey.currentState!.context);
 
 class App extends StatefulWidget {
   const App({super.key});
-
-  static const androidChannel = AndroidNotificationChannel(
-    'cliqmit_notification_channel',
-    'High Importance Notifications',
-    importance: Importance.high,
-    description: 'Default notification channel',
-    enableLights: true,
-  );
-
-  static final flutterLocalNotificationsPlugin =
-      FlutterLocalNotificationsPlugin();
 
   @override
   State<App> createState() => _AppState();
@@ -47,13 +35,6 @@ class _AppState extends State<App> with WidgetsBindingObserver {
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
-  }
-
-  @override
-  void didChangePlatformBrightness() {
-    super.didChangePlatformBrightness();
-    // final brightness =
-    //     WidgetsBinding.instance.platformDispatcher.platformBrightness;
   }
 
   @override
@@ -95,7 +76,6 @@ class _AppState extends State<App> with WidgetsBindingObserver {
             navigatorObservers: [appRouteObserver],
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: const [Locale('en'), Locale('es')],
-            themeMode: ThemeMode.system,
             darkTheme: darkTheme,
             theme: lightTheme,
             initialRoute: AppRoutes.splash,

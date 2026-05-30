@@ -37,10 +37,10 @@ class _HomeViewState extends State<HomeView> {
                     ),
                   ),
                   HeaderText('Discover', fontSize: 26),
-                  HomeIcon(),
+                  const HomeIcon(),
                 ],
               ),
-              Gap(16),
+              const Gap(16),
               Expanded(
                 child: BlocBuilder<ExploreStationsCubit, ExploreStationsState>(
                   builder: (context, state) {
@@ -50,10 +50,9 @@ class _HomeViewState extends State<HomeView> {
                         children: [
                           ListView.separated(
                             itemCount: state.stations.length,
-                            separatorBuilder: (context, index) => Gap(10),
+                            separatorBuilder: (context, index) => const Gap(10),
                             itemBuilder: (context, index) {
                               final station = stations[index];
-                              print(station.isFavorite);
                               return StationItem(
                                 name: station.name,
                                 location: station.location?.locationText,

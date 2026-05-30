@@ -56,7 +56,7 @@ class _FavoritesViewState extends State<FavoritesView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PrimaryAppBar(title: 'Favorites'),
+      appBar: const PrimaryAppBar(title: 'Favorites'),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         child: BlocBuilder<FavoriteCubit, FavoriteState>(

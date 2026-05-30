@@ -1,3 +1,6 @@
+// router.dart
+// ignore_for_file: cast_nullable_to_non_nullable
+
 import 'package:flutter/material.dart';
 import 'package:labradio/core/core.dart';
 import 'package:labradio/features/features.dart';

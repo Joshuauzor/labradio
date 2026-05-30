@@ -26,9 +26,9 @@ class StationRemoteDataSourceImpl implements StationRemoteDataSource {
       InterceptorsWrapper(
         onRequest: (options, handler) {
           options.headers['X-RapidAPI-Key'] =
-              dotenv.env[EnvConstants.rapidApiKey]!;
+              dotenv.env[EnvConstants.rapidApiKey];
           options.headers['X-RapidAPI-Host'] =
-              dotenv.env[EnvConstants.rapidApiHost]!;
+              dotenv.env[EnvConstants.rapidApiHost];
           handler.next(options);
         },
       ),

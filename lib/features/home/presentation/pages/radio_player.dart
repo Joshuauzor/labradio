@@ -49,11 +49,11 @@ class _RadioPlayerState extends State<RadioPlayer> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Align(
+              const Align(
                 alignment: Alignment.centerLeft,
-                child: const CustomBackButton(),
+                child: CustomBackButton(),
               ),
-              Gap(42),
+              const Gap(42),
               Expanded(
                 child: StreamBuilder<RadioStreamData>(
                   stream: context.read<RadioPlayerCubit>().positionDataStream,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:labradio/app/app.dart';
+import 'package:labradio/core/core.dart';
 
 class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget {
   const PrimaryAppBar({
@@ -27,13 +28,14 @@ class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      iconTheme: const IconThemeData(color: AppColors.white),
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       leading: leading,
       title: TextRegular(
         title,
         fontSize: fontSize,
         fontWeight: FontWeight.w700,
-        color: titleColor ?? Theme.of(context).textTheme.bodyMedium?.color,
+        color: titleColor ?? AppColors.white,
       ),
       actions: [if (action != null) action!],
       centerTitle: centerTitle,

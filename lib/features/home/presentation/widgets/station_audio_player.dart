@@ -37,15 +37,15 @@ class StationAudioPlayer extends StatelessWidget {
                   borderRadius: 4,
                 ),
               ),
-              Gap(32),
+              const Gap(32),
               TextRegular(
                 station.name,
                 fontSize: 24,
                 fontWeight: FontWeight.w700,
               ),
-              Gap(4),
+              const Gap(4),
               TextRegular(station.location?.locationText ?? '', fontSize: 14),
-              Gap(4),
+              const Gap(4),
               TextRegular(
                 station.languages.firstOrNull?.name ?? '',
                 fontSize: 14,

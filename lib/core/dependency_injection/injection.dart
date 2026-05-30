@@ -1,6 +1,6 @@
-import 'package:labradio/core/dependency_injection/injection.config.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
+import 'package:labradio/core/dependency_injection/injection.config.dart';
 
 /// This is the root of the dependency injection tree.
 final sl = GetIt.instance;

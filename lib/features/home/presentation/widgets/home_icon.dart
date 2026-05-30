@@ -15,7 +15,7 @@ class HomeIcon extends StatelessWidget {
       child: Container(
         width: 40,
         height: 40,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: AppColors.primary,
           shape: BoxShape.circle,
         ),

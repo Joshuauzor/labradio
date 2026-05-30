@@ -19,13 +19,14 @@ class FavoriteRemoteDataSourceImpl implements FavoriteRemoteDataSource {
   FavoriteRemoteDataSourceImpl({
     required this.networkInfo,
     required this.localDataStorage,
-  }) {}
+  });
 
   final NetworkInfo networkInfo;
   final LocalDataStorage localDataStorage;
 
   @override
   Future<void> addToFavorites({required StationEntity station}) async {
+    print('addToFavorites: ${station.name}');
     await localDataStorage.saveFavoriteStations(station);
   }
 

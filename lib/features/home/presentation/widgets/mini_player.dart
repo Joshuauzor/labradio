@@ -45,11 +45,11 @@ class MiniPlayer extends StatelessWidget {
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(4),
                                     color: AppColors.primary,
-                                    boxShadow: [
+                                    boxShadow: const [
                                       BoxShadow(
                                         color: AppColors.shadow,
                                         blurRadius: 27,
-                                        offset: const Offset(0, 4),
+                                        offset: Offset(0, 4),
                                       ),
                                     ],
                                   ),

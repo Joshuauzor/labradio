@@ -18,8 +18,9 @@ class _SplashViewState extends State<SplashView> {
   }
 
   Future<void> _pageSetup() async {
+    final navigator = Navigator.of(context);
     Future.delayed(const Duration(seconds: 2), () {
-      Navigator.pushReplacementNamed(context, AppRoutes.onboarding);
+      navigator.pushReplacementNamed(AppRoutes.home);
     });
   }
 

@@ -13,18 +13,18 @@ class StationLoader extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         color: AppColors.secondary,
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             color: AppColors.shadow,
             blurRadius: 27,
-            offset: const Offset(0, 4),
+            offset: Offset(0, 4),
           ),
         ],
         // border: Border.all(color: AppColors.primary),
       ),
-      child: Row(
+      child: const Row(
         children: [
-          LazyLoader(width: 90, height: 90, borderRadius: 8),
+          LazyLoader(width: 90, height: 90),
           Gap(16),
           Expanded(
             child: Column(

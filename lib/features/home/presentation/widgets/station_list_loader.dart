@@ -8,7 +8,7 @@ class StationListLoader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      separatorBuilder: (context, index) => Gap(10),
+      separatorBuilder: (context, index) => const Gap(10),
       physics: const NeverScrollableScrollPhysics(),
       itemCount: 7,
       itemBuilder: (context, index) => const StationLoader(),
