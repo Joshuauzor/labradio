@@ -26,7 +26,6 @@ class FavoriteRemoteDataSourceImpl implements FavoriteRemoteDataSource {
 
   @override
   Future<void> addToFavorites({required StationEntity station}) async {
-    print('addToFavorites: ${station.name}');
     await localDataStorage.saveFavoriteStations(station);
   }
 
