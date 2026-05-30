@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:labradio/core/core.dart';
 
 class PhotoHolder extends StatelessWidget {
@@ -48,11 +47,7 @@ class PhotoHolder extends StatelessWidget {
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(borderRadius),
-              child: Center(
-                child:
-                    placeholder ??
-                    SvgPicture.asset(AppAssets.info, fit: BoxFit.cover),
-              ),
+              child: Center(child: placeholder),
             ),
           ),
           errorWidget: (context, url, error) => Container(
@@ -61,11 +56,7 @@ class PhotoHolder extends StatelessWidget {
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(borderRadius),
-              child: Center(
-                child:
-                    placeholder ??
-                    SvgPicture.asset(AppAssets.info, fit: BoxFit.cover),
-              ),
+              child: Center(child: placeholder),
             ),
           ),
         ),

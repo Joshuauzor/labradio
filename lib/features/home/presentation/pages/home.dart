@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:labradio/app/app.dart';
 import 'package:labradio/core/core.dart';
@@ -24,9 +25,19 @@ class _HomeViewState extends State<HomeView> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  HomeIcon(),
+                  HomeIcon(
+                    onTap: () =>
+                        Navigator.pushNamed(context, AppRoutes.favorites),
+                    icon: Center(
+                      child: SvgPicture.asset(
+                        AppAssets.favorite,
+                        width: 24,
+                        height: 24,
+                      ),
+                    ),
+                  ),
                   HeaderText('Discover', fontSize: 26),
-                  HomeIcon(icon: AppAssets.search),
+                  HomeIcon(),
                 ],
               ),
               Gap(16),
@@ -35,19 +46,32 @@ class _HomeViewState extends State<HomeView> {
                   builder: (context, state) {
                     return switch (state) {
                       ExploreStationsLoading() => const StationListLoader(),
-                      ExploreStationsLoaded() => Stack(
+                      ExploreStationsLoaded(:final stations) => Stack(
                         children: [
                           ListView.separated(
                             itemCount: state.stations.length,
                             separatorBuilder: (context, index) => Gap(10),
                             itemBuilder: (context, index) {
-                              final station = state.stations[index];
+                              final station = stations[index];
+                              print(station.isFavorite);
                               return StationItem(
                                 name: station.name,
                                 location: station.location?.locationText,
                                 language: station.languages.firstOrNull?.name,
                                 logo: station.logo,
-                                onFavorite: () {},
+                                onFavorite: () {
+                                  if (station.isFavorite ?? false) {
+                                    context
+                                        .read<ExploreStationsCubit>()
+                                        .removeFromFavorites(
+                                          stationId: station.id,
+                                        );
+                                  } else {
+                                    context
+                                        .read<ExploreStationsCubit>()
+                                        .addToFavorites(stationId: station.id);
+                                  }
+                                },
                                 isFavorite: station.isFavorite ?? false,
                                 onTap: () => Navigator.pushNamed(
                                   context,

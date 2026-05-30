@@ -29,6 +29,12 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         viewToShow: RadioPlayer(params: params),
       );
 
+    case AppRoutes.favorites:
+      return _getPageRoute(
+        routeName: settings.name!,
+        viewToShow: const FavoritesView(),
+      );
+
     default:
       return MaterialPageRoute<dynamic>(
         builder: (_) => Scaffold(

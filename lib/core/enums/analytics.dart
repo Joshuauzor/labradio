@@ -1,4 +1,4 @@
-enum SCREENS { player }
+enum SCREENS { player, favoritesView }
 
 enum ACTIONS { addToFavorites }
 

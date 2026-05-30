@@ -3,15 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:labradio/core/core.dart';
 import 'package:labradio/features/features.dart';
 
-class ExploreStationsCubit extends Cubit<ExploreStationsState> {
-  ExploreStationsCubit({
-    required this.getStationsUseCase,
-    required this.addToFavoritesUseCase,
+class FavoriteCubit extends Cubit<FavoriteState> {
+  FavoriteCubit({
+    required this.getFavoriteStationsUseCase,
     required this.removeFromFavoritesUseCase,
-  }) : super(const ExploreStationsState.initial());
+  }) : super(const FavoriteState.initial());
 
-  final GetStationsUseCase getStationsUseCase;
-  final AddToFavoritesUseCase addToFavoritesUseCase;
+  final GetFavoriteStationsUseCase getFavoriteStationsUseCase;
   final RemoveFromFavoritesUseCase removeFromFavoritesUseCase;
 
   List<StationEntity> _stations = [];
@@ -19,7 +17,7 @@ class ExploreStationsCubit extends Cubit<ExploreStationsState> {
   bool _loadingMore = false;
   bool _hasMore = false;
 
-  Future<void> getStations({
+  Future<void> getFavoriteStations({
     required int skip,
     int limit = 10,
     bool reload = true, // enable loading state
@@ -28,7 +26,7 @@ class ExploreStationsCubit extends Cubit<ExploreStationsState> {
   }) async {
     // enable loading state
     if (reload) {
-      emit(const ExploreStationsState.loading());
+      emit(const FavoriteState.loading());
     }
     // reset all values
     if (reset) {
@@ -45,62 +43,27 @@ class ExploreStationsCubit extends Cubit<ExploreStationsState> {
       }
       _loadingMore = true;
       emit(
-        ExploreStationsState.loaded(
-          stations: _stations,
-          isLoadingMore: _loadingMore,
-        ),
+        FavoriteState.loaded(stations: _stations, isLoadingMore: _loadingMore),
       );
     }
 
-    final result = await getStationsUseCase(
-      GetStationsUseCaseParams(skip: skip, limit: limit),
+    final result = await getFavoriteStationsUseCase(
+      GetFavoriteStationsUseCaseParams(skip: skip, limit: limit),
     );
 
     emit(
       await result.fold(
-        (failure) =>
-            ExploreStationsState.error(ConvertFailureToString()(failure)),
+        (failure) => FavoriteState.error(ConvertFailureToString()(failure)),
         (stations) async {
           // update stations
           _stations.addAll(stations);
           _hasMore = stations.length >= limit;
           _loadingMore = false;
 
-          return ExploreStationsState.loaded(
+          return FavoriteState.loaded(
             stations: _stations,
             isLoadingMore: _loadingMore,
           );
-        },
-      ),
-    );
-  }
-
-  // add to favorites
-  Future<void> addToFavorites({required int stationId}) async {
-    final stationIndex = _stations.indexWhere(
-      (station) => station.id == stationId,
-    );
-    if (stationIndex == -1) {
-      return;
-    }
-
-    final stations = [..._stations];
-    stations[stationIndex] = stations[stationIndex].copyWith(isFavorite: true);
-    emit(ExploreStationsState.loaded(stations: stations));
-
-    // save the model to local storage since backend is not ready yet
-    final result = await addToFavoritesUseCase(
-      AddToFavoritesUseCaseParams(station: stations[stationIndex]),
-    );
-
-    emit(
-      await result.fold(
-        (failure) {
-          return ExploreStationsState.loaded(stations: _stations);
-        },
-        (data) {
-          _stations = stations;
-          return ExploreStationsState.loaded(stations: _stations);
         },
       ),
     );
@@ -117,7 +80,7 @@ class ExploreStationsCubit extends Cubit<ExploreStationsState> {
 
     final stations = [..._stations];
     stations[stationIndex] = stations[stationIndex].copyWith(isFavorite: false);
-    emit(ExploreStationsState.loaded(stations: stations));
+    emit(FavoriteState.loaded(stations: stations));
 
     // save the model to local storage since backend is not ready yet
     final result = await removeFromFavoritesUseCase(
@@ -127,11 +90,11 @@ class ExploreStationsCubit extends Cubit<ExploreStationsState> {
     emit(
       await result.fold(
         (failure) {
-          return ExploreStationsState.loaded(stations: _stations);
+          return FavoriteState.loaded(stations: _stations);
         },
         (data) {
           _stations = stations;
-          return ExploreStationsState.loaded(stations: _stations);
+          return FavoriteState.loaded(stations: _stations);
         },
       ),
     );

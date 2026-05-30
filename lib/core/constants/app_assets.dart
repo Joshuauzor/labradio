@@ -12,4 +12,5 @@ class AppAssets {
   static const String favoriteFilled = 'assets/icons/marked_as_favorite.svg';
   static const String pause = 'assets/icons/pause.svg';
   static const String play = 'assets/icons/play.svg';
+  static const String trash = 'assets/icons/trash.svg';
 }

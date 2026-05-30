@@ -61,15 +61,23 @@ class _AppState extends State<App> with WidgetsBindingObserver {
     return MultiBlocProvider(
       providers: [
         BlocProvider<ExploreStationsCubit>(
-          create: (context) =>
-              ExploreStationsCubit(getStationsUseCase: sl<GetStationsUseCase>())
-                ..getStations(skip: 0),
+          create: (context) => ExploreStationsCubit(
+            getStationsUseCase: sl<GetStationsUseCase>(),
+            addToFavoritesUseCase: sl<AddToFavoritesUseCase>(),
+            removeFromFavoritesUseCase: sl<RemoveFromFavoritesUseCase>(),
+          )..getStations(skip: 0),
         ),
         BlocProvider<RadioPlayerCubit>(
           create: (context) => RadioPlayerCubit(
             audioController: sl<AudioController>(),
             analytics: sl<GoogleAnalytics>(),
           ),
+        ),
+        BlocProvider<FavoriteCubit>(
+          create: (context) => FavoriteCubit(
+            getFavoriteStationsUseCase: sl<GetFavoriteStationsUseCase>(),
+            removeFromFavoritesUseCase: sl<RemoveFromFavoritesUseCase>(),
+          )..getFavoriteStations(skip: 0),
         ),
       ],
       child: Builder(

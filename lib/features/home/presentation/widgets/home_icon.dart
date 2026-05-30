@@ -3,20 +3,24 @@ import 'package:flutter_svg/svg.dart';
 import 'package:labradio/core/core.dart';
 
 class HomeIcon extends StatelessWidget {
-  const HomeIcon({super.key, this.icon = AppAssets.hamburger});
+  const HomeIcon({super.key, this.icon, this.onTap});
 
-  final String icon;
-
+  final Widget? icon;
+  final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 40,
-      height: 40,
-      decoration: BoxDecoration(
-        color: AppColors.primary,
-        shape: BoxShape.circle,
+    return GestureDetector(
+      onTap: onTap,
+      behavior: HitTestBehavior.opaque,
+      child: Container(
+        width: 40,
+        height: 40,
+        decoration: BoxDecoration(
+          color: AppColors.primary,
+          shape: BoxShape.circle,
+        ),
+        child: icon ?? SvgPicture.asset(AppAssets.search),
       ),
-      child: SvgPicture.asset(icon),
     );
   }
 }
