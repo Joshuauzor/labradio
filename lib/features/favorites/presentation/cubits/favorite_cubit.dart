@@ -71,30 +71,32 @@ class FavoriteCubit extends Cubit<FavoriteState> {
 
   // remove from favorites
   Future<void> removeFromFavorites({required int stationId}) async {
+    emit(const FavoriteState.loading());
     final stationIndex = _stations.indexWhere(
       (station) => station.id == stationId,
     );
     if (stationIndex == -1) {
       return;
     }
-
-    final stations = [..._stations];
-    stations[stationIndex] = stations[stationIndex].copyWith(isFavorite: false);
-    emit(FavoriteState.loaded(stations: stations));
+    final station = _stations[stationIndex];
+    _stations.removeAt(stationIndex);
+    emit(FavoriteState.loaded(stations: _stations));
 
     // save the model to local storage since backend is not ready yet
     final result = await removeFromFavoritesUseCase(
-      RemoveFromFavoritesUseCaseParams(station: stations[stationIndex]),
+      RemoveFromFavoritesUseCaseParams(station: station),
     );
 
     emit(
       await result.fold(
         (failure) {
+          _stations.insert(stationIndex, station);
           return FavoriteState.loaded(stations: _stations);
         },
         (data) {
-          _stations = stations;
-          return FavoriteState.loaded(stations: _stations);
+          return FavoriteState.loaded(
+            stations: List<StationEntity>.from(_stations),
+          );
         },
       ),
     );

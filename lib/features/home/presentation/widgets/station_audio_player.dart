@@ -27,31 +27,32 @@ class StationAudioPlayer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Column(
-          children: [
-            PhotoHolder(
-              image: station.logo,
-              width: 300,
-              height: 300,
-              borderRadius: 4,
-            ),
-            Gap(32),
-            TextRegular(
-              station.name,
-              fontSize: 24,
-              fontWeight: FontWeight.w700,
-            ),
-            Gap(4),
-            TextRegular(station.location?.locationText ?? '', fontSize: 14),
-            Gap(4),
-            TextRegular(
-              station.languages.firstOrNull?.name ?? '',
-              fontSize: 14,
-            ),
-          ],
+        Expanded(
+          child: Column(
+            children: [
+              Expanded(
+                child: PhotoHolder(
+                  image: station.logo,
+                  width: double.infinity,
+                  borderRadius: 4,
+                ),
+              ),
+              Gap(32),
+              TextRegular(
+                station.name,
+                fontSize: 24,
+                fontWeight: FontWeight.w700,
+              ),
+              Gap(4),
+              TextRegular(station.location?.locationText ?? '', fontSize: 14),
+              Gap(4),
+              TextRegular(
+                station.languages.firstOrNull?.name ?? '',
+                fontSize: 14,
+              ),
+            ],
+          ),
         ),
-        Spacer(),
-
         const Gap(32),
         SafeArea(
           child: Center(

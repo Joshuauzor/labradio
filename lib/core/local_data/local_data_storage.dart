@@ -46,7 +46,9 @@ class LocalDataStorageImpl implements LocalDataStorage {
   @override
   Future<void> saveFavoriteStations(StationEntity station) async {
     final favoriteStations = await getFavoriteStations() ?? [];
-    if (favoriteStations.any((s) => s.id == station.id)) {
+    if (favoriteStations.any(
+      (s) => s.id == station.id || s.name == station.name,
+    )) {
       return;
     }
     final newFavoriteStations = [...favoriteStations, station];
